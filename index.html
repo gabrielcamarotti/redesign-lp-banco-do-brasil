@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Banco do Brasil — Redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Archivo: usada só nos títulos das colunas do footer (BB / Benefícios /
+       Conta BB / Ajuda) — é a fonte que o Figma define ali, diferente da
+       tipografia BB Textos/Titulos usada no resto do site. -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -17,8 +23,7 @@
         <nav class="nav-left">
           <a href="#why-bb" class="nav-link">Benefícios</a>
           <a href="#ourocardSection" class="nav-link">Ourocard</a>
-          <a href="#" class="nav-link">Investimentos</a>
-          <a href="#" class="nav-link">Dúvidas</a>
+          <a href="#contaBBSection" class="nav-link">Conta BB</a>
         </nav>
 
         <a href="#" class="logo">
@@ -116,6 +121,133 @@
           <p class="ourocard-desc">Tenha praticidade para suas compras e benefícios que combinam com todos os momentos da sua vida.</p>
         </div>
         <a href="#" class="btn btn-sm btn-primary">Conheça o Ourocard</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contabb" id="contaBBSection">
+    <div class="container contabb-inner">
+      <div class="contabb-heading">
+        <div class="contabb-heading-left">
+          <span class="badge badge-light">CONTA BB</span>
+          <h2 class="contabb-title">Uma conta para tudo o que faz parte da vida.</h2>
+        </div>
+
+        <div class="contabb-heading-right">
+          <p class="contabb-desc">Abra sua conta pelo App BB e tenha soluções para cuidar do seu dinheiro e realizar seus planos.</p>
+          <div class="contabb-buttons">
+            <a href="#" class="btn btn-sm contabb-btn-primary">Abra sua conta</a>
+            <a href="#" class="btn btn-sm btn-secondary-light">Conheça a Conta BB</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contabb-grid">
+        <div class="contabb-row">
+          <article class="conta-card conta-card-wide">
+            <img class="conta-card-img" src="Assets/Imagem controle digital.webp" alt="" />
+            <div class="conta-card-gradient conta-card-gradient--digital"></div>
+            <div class="conta-card-text">
+              <p class="conta-card-title">Conta digital</p>
+              <p class="conta-card-desc">Abra sua conta pelo App BB e cuide da sua vida financeira de onde estiver.</p>
+            </div>
+          </article>
+
+          <article class="conta-card conta-card-narrow">
+            <img class="conta-card-img" src="Assets/Imagem pix.webp" alt="" />
+            <div class="conta-card-gradient conta-card-gradient--pix"></div>
+            <div class="conta-card-text">
+              <p class="conta-card-title">Pix e pagamentos</p>
+              <p class="conta-card-desc">Faça pagamentos e transferências de forma simples pelo App BB.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="contabb-row">
+          <article class="conta-card conta-card-narrow">
+            <img class="conta-card-img" src="Assets/Imagem crédito.webp" alt="" />
+            <div class="conta-card-gradient conta-card-gradient--credito"></div>
+            <div class="conta-card-text">
+              <p class="conta-card-title">Crédito</p>
+              <p class="conta-card-desc">Encontre soluções de crédito para diferentes momentos da sua vida.</p>
+            </div>
+          </article>
+
+          <article class="conta-card conta-card-wide">
+            <img class="conta-card-img" src="Assets/Imagem tudo pelo app.webp" alt="" />
+            <div class="conta-card-gradient conta-card-gradient--app"></div>
+            <div class="conta-card-text">
+              <p class="conta-card-title">Tudo pelo App</p>
+              <p class="conta-card-desc">Consulte sua conta, acompanhe suas finanças e resolva o que precisa pelo App BB.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final" id="ctaFinalSection">
+    <div class="container">
+      <div class="cta-frame">
+        <img class="cta-composition" src="Assets/Composição CTA final.webp" alt="" />
+
+        <div class="cta-content">
+          <div class="cta-text">
+            <div class="cta-copy">
+              <span class="badge">BANCO DO BRASIL</span>
+              <h2 class="cta-title">Pronto para contar com o BB?</h2>
+              <p class="cta-desc">Abra sua conta e tenha o BB com você para realizar seus próximos planos.</p>
+            </div>
+            <a href="#" class="btn btn-sm btn-primary">Abra sua conta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-banner">
+      <img class="cta-banner-img" src="Assets/footer-background.png" alt="" />
+      <div class="cta-banner-overlay"></div>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <p class="footer-col-title">BB</p>
+          <nav class="footer-col-links">
+            <a href="#why-bb">Benefícios</a>
+            <a href="#ourocardSection">Ourocard</a>
+            <a href="#contaBBSection">Conta BB</a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Benefícios</p>
+          <nav class="footer-col-links">
+            <a href="#">Praticidade</a>
+            <a href="#">Controle</a>
+            <a href="#">Segurança</a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Conta BB</p>
+          <nav class="footer-col-links">
+            <a href="#">Pix</a>
+            <a href="#">Crédito</a>
+            <a href="#">Investimentos</a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-col-title">Ajuda</p>
+          <nav class="footer-col-links">
+            <a href="#">FAQ</a>
+            <a href="#">Suporte</a>
+            <a href="#">Contato</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="container cta-logo-wrap">
+        <img class="cta-logo" src="Assets/logo-bb-wordmark.svg" alt="Banco do Brasil" />
       </div>
     </div>
   </section>
