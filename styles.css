@@ -69,7 +69,7 @@ a {
 .nav-left {
   display: flex;
   align-items: center;
-  width: 408px;
+  width: 371px;
   flex-shrink: 0;
 }
 
@@ -132,6 +132,9 @@ a {
   border-radius: 16px;
   font-size: 20px;
   font-weight: 700;
+  /* Figma usa line-height 1.5 aqui (diferente do btn-sm, que é 1) — sem
+     isso o botão fica ~7px mais baixo que o Figma (56px vs ~48px). */
+  line-height: 1.5;
 }
 
 .btn-primary {
@@ -470,4 +473,404 @@ a {
   font-size: 18px;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   Conta BB — heading + grid 2x2 de cards (largo/estreito alternados)
+   ========================================================================== */
+.contabb {
+  background: #ffffff;
+  padding-top: 56px;
+}
+
+.contabb-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.contabb-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 48px;
+  width: 100%;
+}
+
+.contabb-heading-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 536px;
+  flex: 1 1 320px;
+}
+
+.contabb-title {
+  margin: 0;
+  width: 100%;
+  font-family: "BB Titulos", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.96px;
+  color: #030d55;
+}
+
+.contabb-heading-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  flex: 1 1 320px;
+  max-width: 423px;
+}
+
+.contabb-desc {
+  margin: 0;
+  width: 100%;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(1, 6, 19, 0.8);
+}
+
+.contabb-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Botões desta seção têm variantes próprias: fundo claro (branco), o que
+   muda cor de texto/bordas em relação aos mesmos botões sobre fundo escuro
+   (Hero/Header/Ourocard). */
+.contabb-btn-primary {
+  width: 164px;
+  background: #fcfc30;
+  border-color: rgba(61, 61, 61, 0.1);
+  color: #030d55;
+}
+
+.contabb-btn-primary:hover {
+  background: rgba(255, 255, 141, 0.1);
+  border-color: rgba(199, 199, 199, 0.1);
+  color: #ffff8d;
+}
+
+.btn-secondary-light {
+  background: rgba(199, 199, 199, 0.1);
+  border-color: rgba(61, 61, 61, 0.15);
+  color: #010613;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.btn-secondary-light:hover {
+  background: rgba(255, 255, 141, 0.1);
+  border-color: rgba(61, 61, 61, 0.15);
+  color: #ffff8d;
+}
+
+.contabb-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Grid com colunas em fr: a proporção 639:449 vem do frame do Figma, mas
+   serve só de peso relativo — a largura final de cada coluna é sempre
+   calculada a partir do espaço disponível, nunca um valor fixo em px.
+   A 2ª linha inverte a ordem (card estreito primeiro), então inverte
+   também o peso das colunas. */
+.contabb-row {
+  display: grid;
+  grid-template-columns: 639fr 449fr;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+}
+
+.contabb-grid .contabb-row:nth-child(2) {
+  grid-template-columns: 449fr 639fr;
+}
+
+.conta-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 32px;
+}
+
+/* Altura proporcional à largura, na mesma razão do card no Figma (639x308 e
+   449x308) — cresce e encolhe junto com a coluna, nunca uma altura fixa. */
+.conta-card-wide {
+  aspect-ratio: 639 / 308;
+}
+
+.conta-card-narrow {
+  aspect-ratio: 449 / 308;
+}
+
+.conta-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+  /* Zoom sutil e contido: a imagem escala, o .conta-card com overflow:hidden
+     mascara o excesso — o card e o layout ao redor não se movem. */
+  transition: transform 400ms ease;
+}
+
+.conta-card:hover .conta-card-img {
+  transform: scale(1.05);
+}
+
+.conta-card-gradient {
+  position: absolute;
+  inset: 0;
+}
+
+/* Cada card tem um degradê ligeiramente diferente (extraído do Figma) —
+   mesma direção (de cima pra baixo), pontos de parada distintos. */
+.conta-card-gradient--digital {
+  background: linear-gradient(to bottom, rgba(1, 6, 19, 0) 55.844%, #010613 100%);
+}
+
+.conta-card-gradient--pix {
+  background: linear-gradient(to bottom, rgba(1, 6, 19, 0) 49.999%, #010613 99.764%);
+}
+
+.conta-card-gradient--credito {
+  background: linear-gradient(to bottom, rgba(1, 6, 19, 0) 46.767%, #010613 99.779%);
+}
+
+.conta-card-gradient--app {
+  background: linear-gradient(to bottom, rgba(1, 6, 19, 0) 44.836%, #010613 99.697%);
+}
+
+.conta-card-text {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.conta-card-title {
+  margin: 0;
+  font-family: "BB Titulos", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.64px;
+  color: #ffffff;
+}
+
+.conta-card-desc {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   CTA final — cartão com gradiente + mockup de celular "vazando" o topo,
+   seguido de um banner full-bleed (ultrapassa os 48px do container) com
+   imagem borrada + wordmark do BB.
+
+   Nada aqui usa px fixo para determinar tamanho: as proporções do Figma
+   (card 1104x541, celular 593x496, banner 1200x765) viram porcentagem/
+   aspect-ratio, então tudo cresce e encolhe junto com o viewport — os
+   valores em px que aparecem (nos clamp()) são só piso/teto de segurança,
+   nunca o que define o tamanho no meio da faixa.
+   ========================================================================== */
+.cta-final {
+  background: #ffffff;
+  padding-top: 56px;
+}
+
+/* Composição pronta (fundo, gradiente, celular, corte, profundidade) vem
+   de um único asset ("Composição CTA final.webp"), usado exatamente como
+   está — sem recriar nada disso em CSS. O HTML só sobrepõe o texto real
+   por cima, por isso .cta-frame não tem padding/aspect-ratio própria: o
+   tamanho dele é o tamanho natural da imagem (width:100%, height:auto). */
+.cta-frame {
+  position: relative;
+  width: 100%;
+}
+
+.cta-composition {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cta-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  /* Bloco (eyebrow+heading+description+button) centralizado como
+     conjunto no eixo vertical do card — não cada elemento individualmente,
+     é o próprio flex container que centraliza a coluna inteira. */
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: clamp(24px, 8.5%, 90px) clamp(24px, 5.8%, 64px);
+  /* Reserva a área da direita — onde a imagem já tem o celular — pro
+     texto nunca ficar por baixo dele, em nenhuma largura. Precisa estar
+     num elemento de largura cheia (não no .cta-text, que já tem
+     max-width) — senão a % do padding é calculada sobre uma largura
+     pequena e come todo o espaço de texto. */
+  padding-right: max(clamp(24px, 5.8%, 64px), 54%);
+}
+
+.cta-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 445px;
+}
+
+.cta-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.cta-title {
+  margin: 0;
+  width: 100%;
+  font-family: "BB Titulos", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.96px;
+  color: #ffffff;
+}
+
+.cta-desc {
+  margin: 0;
+  width: 100%;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Banner: propositalmente ultrapassa o container (full-bleed, sem os
+   48px laterais) — é assim no Figma. aspect-ratio mantém a proporção
+   1200:765 fluida em qualquer largura. */
+.cta-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1200 / 765;
+  overflow: hidden;
+  margin-top: 56px;
+}
+
+.cta-banner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(7.5px);
+  /* leve escala pra a borda borrada não "revelar" o fundo branco por
+     baixo, nas bordas do banner */
+  transform: scale(1.06);
+}
+
+.cta-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(125, 125, 22, 0.5);
+}
+
+/* Wordmark: fica sobre o banner, alinhada ao mesmo container (48px) do
+   resto da página, ancorada perto da base — 105px de respiro abaixo dela
+   numa referência de 765px de altura do banner, convertido pra % da
+   largura (é a base do padding percentual em CSS) = 105/1200 = 8,75%. */
+.cta-logo-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 8.75%;
+}
+
+.cta-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Footer — 4 colunas de links sobrepostas ao mesmo banner (imagem borrada
+   + wordmark) logo acima. Posição vertical em % da altura do banner
+   (top 40/765 = 5,23%, altura 383/765 = 50,07%), igual à lógica já usada
+   pra posicionar a logo — assim tudo fica proporcional ao aspect-ratio
+   fixo do banner (1200/765), em qualquer largura. */
+.footer-columns {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5.23%;
+  height: 50.07%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-col-title {
+  margin: 0;
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.footer-col-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col-links a {
+  font-family: "BB Textos", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s ease;
+}
+
+.footer-col-links a:hover {
+  color: #ffffff;
 }
